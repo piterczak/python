@@ -6,3 +6,5 @@ def hello():
 hello()
 hello()
 hello()
+
+print('Test gita')
