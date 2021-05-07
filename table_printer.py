@@ -28,8 +28,7 @@ def print_table(tablica, max_len):                                      #funkcja
         print()
         for j in range(len(tablica)):
             print(tablica[j][i].rjust(max_len[j]), end=' ')
-            j+=1
-    i+=1   
+
 
 print_table(tableData, search_for_longest_word(tableData))
 
