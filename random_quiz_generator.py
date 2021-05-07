@@ -32,7 +32,28 @@ for quizNum in range(35):
    states=list(capitals.keys())
    #shuffling the list States, that involve capitals.keys 
    random.shuffle(states)
-   for i in states:
+
+   for i in range(50):
       #looping through 50 states to write questions in file 
-      quizFile.write(i + '. What is the capital of the State ' + states(i) + '\n Answer: ')
+      #get right and wrong answers
+      correct_answer = capitals[states[i]]
+      wrong_answers = list(capitals.values())
+      del wrong_answers[wrong_answers.index(correct_answer)]
+      wrong_answers = random.sample(wrong_answers, 3)
+      answer_options = wrong_answers + [correct_answer]
+      random.shuffle(answer_options)
+
+
+
+      quizFile.write(f'{i+1}. What is the capital of the State  {states[i]}\n')
+      for j in range(4):
+         quizFile.write(f" {'ABCD'[j]}.{answer_options[j]} \n")
+
+
+      #write answers to the key file
+      answerKeyFile.write(f"{i+1}.")
+      answerKeyFile.write(f"{'ABCD'[answer_options.index(correct_answer)]} \n")
+
    quizFile.write('Thank you for taking part in the test. Scores will be stated on my website')
+   quizFile.close()
+   answerKeyFile.close()
